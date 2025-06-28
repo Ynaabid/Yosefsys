@@ -31,3 +31,212 @@
 .nav-sound:hover, .actions input:hover, .actions button:hover {
   box-shadow: 0 0 8px #00c3ff44;
 }
+
+/* Overlay de bienvenida profesional */
+#welcome-overlay {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.9s cubic-bezier(0.23,1,0.32,1), visibility 0.9s;
+  opacity: 1;
+  visibility: visible;
+  overflow: hidden;
+}
+#welcome-overlay.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.welcome-bg-animated {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(120deg, #181c20 0%, #23344a 100%);
+  animation: welcome-bg-move 3s linear infinite alternate;
+  z-index: 1;
+}
+@keyframes welcome-bg-move {
+  0% { filter: brightness(1) blur(0px);}
+  100% { filter: brightness(1.08) blur(2px);}
+}
+.welcome-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 340px;
+  z-index: 2;
+}
+.welcome-svg-anim {
+  margin-bottom: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.welcome-svg-circle {
+  stroke-dasharray: 226;
+  stroke-dashoffset: 226;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.23,1,0.32,1);
+}
+.welcome-svg-circle.draw {
+  stroke-dashoffset: 0;
+}
+.welcome-svg-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.23,1,0.32,1) 0.1s;
+}
+.welcome-svg-check.draw {
+  stroke-dashoffset: 0;
+}
+.welcome-message, .welcome-name, .welcome-role {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+  display: block;
+  will-change: opacity, transform;
+}
+.welcome-message.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.1s;
+}
+.welcome-message {
+  color: #eaf1fa;
+  font-size: 1.18em;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  margin-bottom: 1.7em;
+  margin-top: 0.2em;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-shadow: 0 2px 12px #181c20;
+}
+.welcome-brand {
+  text-align: center;
+  margin-top: 0.2em;
+}
+.welcome-name.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.1s;
+}
+.welcome-role.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.1s;
+}
+.welcome-name {
+  color: #f5f6fa;
+  font-size: 1.35em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2em;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-shadow: 0 2px 12px #181c20;
+}
+.welcome-role {
+  color: #b8c6d9;
+  font-size: 1em;
+  opacity: 0.8;
+  letter-spacing: 0.06em;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+.welcome-spinner-anim {
+  margin-bottom: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spinner-pop 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.welcome-spinner-anim.professional {
+  margin-bottom: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #23272b 60%, transparent 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 32px #3fa3ff33, 0 0 0 2px #3fa3ff22;
+}
+.welcome-spinner-anim.professional.no-pop {
+  /* Elimina la animación de ampliación */
+  animation: none !important;
+}
+.welcome-spinner-svg {
+  width: 96px;
+  height: 96px;
+  display: block;
+}
+.welcome-spinner-bg {
+  opacity: 0.13;
+}
+.welcome-spinner-fg {
+  stroke-dasharray: 251;
+  stroke-dashoffset: 60;
+  transform-origin: 50% 50%;
+  /* Elimina cubic-bezier para que la animación sea lineal y continua */
+  animation: spinner-rotate-linear 1s linear infinite;
+  filter: drop-shadow(0 0 12px #3fa3ff88);
+}
+.welcome-spinner-fg.always-spin {
+  animation: spinner-rotate-linear 1s linear infinite;
+}
+@keyframes spinner-rotate-linear {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+.welcome-message.professional {
+  color: #eaf1fa;
+  font-size: 1.25em;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  margin-bottom: 2.1em;
+  margin-top: 0.3em;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-shadow: 0 2px 18px #181c20, 0 1px 2px #3fa3ff44;
+  background: linear-gradient(90deg, #3fa3ff 0%, #00c3ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.welcome-name.professional {
+  color: #f5f6fa;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  margin-bottom: 0.18em;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-shadow: 0 2px 18px #181c20, 0 1px 2px #3fa3ff44;
+}
+.welcome-role.professional {
+  color: #b8c6d9;
+  font-size: 1.08em;
+  opacity: 0.88;
+  letter-spacing: 0.08em;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-shadow: 0 1px 8px #23272b;
+}
+.welcome-name.professional {
+  color: #f5f6fa;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  margin-bottom: 0.18em;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-shadow: 0 2px 18px #181c20, 0 1px 2px #3fa3ff44;
+}
+.welcome-role.professional {
+  color: #b8c6d9;
+  font-size: 1.08em;
+  opacity: 0.88;
+  letter-spacing: 0.08em;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  text-shadow: 0 1px 8px #23272b;
+}
