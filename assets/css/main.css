@@ -1263,7 +1263,6 @@ input, select, textarea {
 			border: solid 1px #ffffff;
 			border-radius: 100%;
 			overflow: hidden;
-			animation: logo-fadein 1.2s cubic-bezier(0.23, 1, 0.32, 1);
 		}
 		@keyframes logo-fadein {
     0% {
